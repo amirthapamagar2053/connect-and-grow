@@ -106,42 +106,62 @@ export default function Home() {
       </section>
 
       <section className="py-32 px-8 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
-          <div className="relative group">
-            <div className="absolute -inset-4 border border-outline-variant/40 rounded-lg -rotate-2 group-hover:rotate-0 transition-transform duration-700"></div>
-            <img
-              alt="Therapist profile"
-              className="relative rounded-lg grayscale hover:grayscale-0 transition-all duration-700 aspect-[4/5] object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuITbDu1FfNiUncj0oXer1jenIebiN9eOgbbejUM_kf-TOEEJ8neE69dfOF5lXawhOeR9KM4Krkr52hoIMlY9Br_qlDs9SUdB28jktXq-v9pPXSab82rg_meclEpiv8E4ZSUXcGxTtxQrME9a0T-an6pik0rZNT6x_TFSP7p0gpqKMA0z71CDOPM71qKVusMBUZEwhUmm0lV27o6AkSHCZJEtvAy5i_alp23LgTZTO8YM9BQpv0tAp0GQAisku5bzOmzaCrWgOCAQ"
-            />
-          </div>
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <h3 className="font-label text-secondary uppercase tracking-widest text-sm font-bold">
-                Meet Your Guide
-              </h3>
-              <h2 className="text-5xl text-primary italic leading-tight font-headline">
-                &quot;Healing is not a linear process, it is a journey home to
-                yourself.&quot;
-              </h2>
-              <p className="text-xl font-headline text-secondary">
-                — Dr. Helena Vance, PsyD
-              </p>
-            </div>
-            <div className="space-y-6 text-lg text-on-surface-variant leading-relaxed">
-              <p>
-                With over 15 years of experience in clinical psychology, Dr.
-                Helena Vance founded Connect &amp; Grow to bridge the gap
-                between rigorous psychological science and heartfelt compassion.
-              </p>
-            </div>
-            <Link
-              href="/about"
-              className="inline-block bg-inverse-surface text-inverse-on-surface px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+        <div className="text-center mb-16">
+          <h3 className="font-label text-secondary uppercase tracking-widest text-sm font-bold mb-4">
+            Meet Our Team
+          </h3>
+          <h2 className="text-5xl text-primary font-headline">
+            Qualified counsellors <span className="italic">here for you.</span>
+          </h2>
+        </div>
+        <div className="grid md:grid-cols-2 gap-10 max-w-4xl mx-auto">
+          {[
+            {
+              name: "Barada Koirala",
+              title: "Counsellor",
+              photo: "/barada.jpeg",
+              objectPosition: "center 38%",
+              summary:
+                "Supporting individuals and couples through grief, trauma, anxiety, depression, and relationship difficulties with a client-centred, evidence-based approach.",
+            },
+            {
+              name: "Thelma Bennett",
+              title: "Counsellor",
+              photo: "/thelma.jpeg",
+              objectPosition: "center 42%",
+              summary:
+                "Specialising in mental health and trauma-informed care, committed to helping individuals dealing with depression, anxiety, and other challenges.",
+            },
+          ].map((c) => (
+            <div
+              key={c.name}
+              className="bg-surface rounded-lg overflow-hidden shadow-sm border border-outline-variant/30 group"
             >
-              Learn More About Helena
-            </Link>
-          </div>
+              <div className="aspect-[4/5] overflow-hidden">
+                <img
+                  src={c.photo}
+                  alt={c.name}
+                  style={{ objectPosition: c.objectPosition }}
+                  className="w-full h-full object-cover md:grayscale md:group-hover:grayscale-0 transition-all duration-700"
+                />
+              </div>
+              <div className="p-8 space-y-3">
+                <div>
+                  <h3 className="font-headline text-2xl text-primary">{c.name}</h3>
+                  <p className="font-label text-sm uppercase tracking-widest text-secondary">{c.title}</p>
+                </div>
+                <p className="text-on-surface-variant leading-relaxed">{c.summary}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="text-center mt-12">
+          <Link
+            href="/about"
+            className="inline-block bg-inverse-surface text-inverse-on-surface px-8 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
+          >
+            Meet Our Counsellors
+          </Link>
         </div>
       </section>
     </main>
