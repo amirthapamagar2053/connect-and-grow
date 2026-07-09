@@ -39,6 +39,15 @@ const COUNSELLORS = [
   },
 ];
 
+// Cal's embed SDK shares internal state across instances that use the same
+// namespace. Switching between counsellors forces the <Cal> component to
+// unmount/remount (it can't react to a changed calLink otherwise), so each
+// counsellor gets its own namespace to avoid the old iframe's teardown
+// racing with the new one's setup under a shared default namespace.
+function namespaceFor(calLink: string) {
+  return calLink.replace(/[^a-zA-Z0-9_-]/g, "-");
+}
+
 export default function BookingPage() {
   const [selected, setSelected] = useState<number | null>(null);
   const [confirmed, setConfirmed] = useState<{
@@ -49,17 +58,45 @@ export default function BookingPage() {
   const counsellor = selected !== null ? COUNSELLORS[selected] : null;
 
   useEffect(() => {
+    if (!counsellor) return;
+
+    const namespace = namespaceFor(counsellor.calLink);
+    let cal: Awaited<ReturnType<typeof getCalApi>> | null = null;
+    const onBookingSuccessful = (
+      e: CustomEvent<{ data: { title?: string; startTime?: string; paymentRequired: boolean } }>
+    ) => {
+      const detail = e.detail.data;
+      // This fires as soon as a booking is *created*, even when it's only
+      // pending payment. Don't show our "confirmed" screen (which unmounts
+      // the Cal iframe) until payment is actually done — otherwise we tear
+      // down the iframe before Cal's own payment step gets to render.
+      if (detail.paymentRequired) return;
+      setConfirmed({ title: detail.title, startTime: detail.startTime });
+    };
+
     (async function () {
-      const cal = await getCalApi();
-      cal("on", {
-        action: "bookingSuccessfulV2",
-        callback: (e) => {
-          const detail = e.detail.data;
-          setConfirmed({ title: detail.title, startTime: detail.startTime });
-        },
-      });
+      try {
+        cal = await getCalApi({ namespace });
+        cal("on", {
+          action: "bookingSuccessfulV2",
+          callback: onBookingSuccessful,
+        });
+      } catch (err) {
+        console.error("Cal embed API failed to initialize:", err);
+      }
     })();
-  }, []);
+
+    return () => {
+      try {
+        cal?.("off", {
+          action: "bookingSuccessfulV2",
+          callback: onBookingSuccessful,
+        });
+      } catch {
+        // Cal instance may already be torn down — safe to ignore.
+      }
+    };
+  }, [counsellor]);
 
   return (
     <main className="pt-32 pb-24 bg-background">
@@ -208,6 +245,7 @@ export default function BookingPage() {
                     <Cal
                       key={counsellor.calLink}
                       calLink={counsellor.calLink}
+                      namespace={namespaceFor(counsellor.calLink)}
                       style={{ width: "100%", height: "700px", overflow: "scroll" }}
                       config={{ layout: "month_view" }}
                     />
