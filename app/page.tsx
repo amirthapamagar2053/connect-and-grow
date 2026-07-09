@@ -9,13 +9,14 @@ export default function Home() {
             <span className="uppercase tracking-[0.2em] text-secondary font-label text-sm font-bold">
               Cultivating Inner Peace
             </span>
-            <h1 className="text-6xl md:text-8xl leading-[1.1] text-primary tracking-tight font-light font-headline">
-              A sanctuary for <br />
-              <span className="italic">healing the mind.</span>
+            <h1 className="text-5xl md:text-7xl leading-[1.1] text-primary tracking-tight font-light font-headline">
+              A Safe Space for Growth, <br />
+              <span className="italic">build resilience and lasting well-being.</span>
             </h1>
             <p className="text-xl text-on-surface-variant max-w-lg leading-relaxed font-body">
-              Navigate life&apos;s complexities with professional guidance in a
-              space designed for clarity, safety, and profound personal growth.
+           Life can feel overwhelming at times, but support is available. Our caring and
+experienced therapists offer a welcoming environment where you can feel heard,
+understood, and empowered to move forward with confidience.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Link
@@ -38,9 +39,9 @@ export default function Home() {
           <div className="md:col-span-5 relative h-full min-h-[500px]">
             <div className="absolute inset-0 bg-surface-container-low rounded-lg -rotate-3 translate-x-4 translate-y-4"></div>
             <img
-              alt="Therapy Office"
-              className="absolute inset-0 w-full h-full object-cover rounded-lg shadow-2xl z-0"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLvXeqLVDV0E6Z3LcpsBqBIt0qGzpfW3Xbt5MmuWkh5xjgsu1FHbhDqXR6WKR2NuD2dYw9FBd-3T5I2PAUEhDxMRL7A-5zYB6lWabsuFj8qGWYVBleSDsVEggzHfUjArcERHcMFkZN7Fld70sSGVzlNECoKmy7zb4NndTY-RchZW01KU5CcbPlPNYQtWtkIFmfKsSBFzBMvXSTLmrXEMA9gw3Z-Fab_D9WmF3gGQaiwRMJnslN3_rz82_e1xZB0yO-I_z7qb1ml1o"
+              alt="Connect, Share, Grow"
+              className="absolute inset-0 w-full h-full object-contain drop-shadow-xl z-0"
+              src="/connect-share-grow.webp"
             />
           </div>
         </div>

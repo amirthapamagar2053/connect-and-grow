@@ -7,7 +7,7 @@ export default function Footer() {
             Connect &amp; Grow
           </span>
           <p className="font-body text-sm tracking-wide text-on-surface-variant max-w-xs">
-            &copy; 2024 Connect &amp; Grow. A Sanctuary for Healing.
+            &copy; {new Date().getFullYear()}{" "}Connect &amp; Grow. A Sanctuary for Healing.
           </p>
         </div>
         <div className="flex flex-wrap justify-center md:justify-end gap-x-12 gap-y-6">

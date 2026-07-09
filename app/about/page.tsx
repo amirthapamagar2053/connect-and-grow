@@ -7,7 +7,7 @@ const counsellors = [
     photo: "/barada.jpeg",
     objectPosition: "center 38%",
     bio: "A qualified Counsellor with a Bachelor's degree in Counselling and over 12 hours of Continuing Professional Development (CPD). Passionate about supporting individuals and couples through life's challenges in a safe, compassionate, and non-judgmental environment.",
-    specialties: [
+    experience: [
       "Grief & Loss",
       "Domestic Violence",
       "Trauma",
@@ -16,6 +16,7 @@ const counsellors = [
       "Workplace Stress",
       "Relationship Difficulties",
     ],
+    specialties: ["Grief & Loss"],
     approach:
       "Client-centred and evidence-based, incorporating mindfulness-based techniques to support emotional regulation, self-awareness, and personal growth.",
     quote:
@@ -27,12 +28,13 @@ const counsellors = [
     photo: "/thelma.jpeg",
     objectPosition: "center 42%",
     bio: "A compassionate and dedicated counselling professional with a Bachelor's degree in Counseling and over one year of experience in general counselling. Specialising in mental health and trauma-informed care, committed to providing support to individuals dealing with depression, anxiety, and other challenges.",
-    specialties: [
+    experience: [
       "Depression",
       "Anxiety",
       "Trauma-Informed Care",
       "Mental Health",
     ],
+    specialties: ["Anxiety"],
     approach:
       "Utilises evidence-based practices to foster a safe and empowering environment that promotes healing and growth.",
     quote:
@@ -98,6 +100,21 @@ export default function AboutPage() {
               <p className="font-body text-lg text-on-surface-variant leading-relaxed">
                 {c.bio}
               </p>
+              <div>
+                <p className="font-body text-sm uppercase tracking-widest text-secondary mb-3 font-semibold">
+                  Experience
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {c.experience.map((s) => (
+                    <span
+                      key={s}
+                      className="bg-secondary-container text-on-secondary-container text-sm px-4 py-1.5 rounded-full font-medium"
+                    >
+                      {s}
+                    </span>
+                  ))}
+                </div>
+              </div>
               <div>
                 <p className="font-body text-sm uppercase tracking-widest text-secondary mb-3 font-semibold">
                   Specialties
