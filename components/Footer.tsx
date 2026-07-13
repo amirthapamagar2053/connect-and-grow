@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="bg-surface-container w-full rounded-t-lg transition-colors duration-500 border-t border-outline-variant/40">
@@ -11,30 +13,30 @@ export default function Footer() {
           </p>
         </div>
         <div className="flex flex-wrap justify-center md:justify-end gap-x-12 gap-y-6">
-          <a
+          <Link
             className="text-secondary font-body text-sm tracking-wide hover:underline decoration-secondary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity"
-            href="#"
+            href="/privacy-policy"
           >
             Privacy Policy
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-secondary font-body text-sm tracking-wide hover:underline decoration-secondary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity"
-            href="#"
+            href="/terms-of-service"
           >
             Terms of Service
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-secondary font-body text-sm tracking-wide hover:underline decoration-secondary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity"
-            href="#"
+            href="/emergency-resources"
           >
             Emergency Resources
-          </a>
-          <a
+          </Link>
+          <Link
             className="text-secondary font-body text-sm tracking-wide hover:underline decoration-secondary underline-offset-4 opacity-80 hover:opacity-100 transition-opacity"
-            href="#"
+            href="/contact"
           >
             Contact
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
