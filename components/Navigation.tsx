@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import Logo from "@/components/Logo";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -30,8 +31,8 @@ export default function Navigation() {
             <span className={`block h-0.5 w-5 bg-on-background transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
           </button>
 
-          <Link href="/" className="font-headline text-lg md:text-2xl font-bold text-on-background">
-            Connect &amp; Grow
+          <Link href="/">
+            <Logo />
           </Link>
 
           {/* Desktop nav */}
