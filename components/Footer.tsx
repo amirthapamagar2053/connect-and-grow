@@ -8,7 +8,7 @@ export default function Footer() {
         <div className="space-y-4 flex flex-col items-center md:items-start">
           <Logo />
           <p className="font-body text-sm tracking-wide text-on-surface-variant max-w-xs">
-            &copy; {new Date().getFullYear()}{" "}Connect &amp; Grow. A Sanctuary for Healing.
+            &copy; {new Date().getFullYear()}{" "}Connect &amp; Grow.
           </p>
         </div>
         <div className="flex flex-wrap justify-center md:justify-end gap-x-12 gap-y-6">

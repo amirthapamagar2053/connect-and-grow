@@ -106,7 +106,7 @@ export default function BookingPage() {
           Book a Session
         </span>
         <h1 className="font-headline text-5xl md:text-7xl italic text-primary leading-tight mb-6">
-          Find your time <br className="hidden md:block" />for healing.
+          Find your time <br className="hidden md:block" />for yourself.
         </h1>
         <p className="font-body text-xl text-on-surface-variant max-w-xl leading-relaxed">
           Choose your counsellor and pick a time — payment is completed

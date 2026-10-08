@@ -20,7 +20,7 @@ const counsellors = [
     approach:
       "Client-centred and evidence-based, incorporating mindfulness-based techniques to support emotional regulation, self-awareness, and personal growth.",
     quote:
-      "My goal is to provide a supportive therapeutic space where clients feel heard, respected, and empowered on their journey toward healing and positive change.",
+      "My goal is to provide a supportive therapeutic space where clients feel heard, respected, and empowered on their journey toward wellness and positive change.",
   },
   {
     name: "Thelma Bennett",
@@ -36,7 +36,7 @@ const counsellors = [
     ],
     specialties: ["Anxiety"],
     approach:
-      "Utilises evidence-based practices to foster a safe and empowering environment that promotes healing and growth.",
+      "Utilises evidence-based practices to foster a safe and empowering environment that promotes comfort and growth.",
     quote:
       "I am committed to creating a space where every client feels empowered to overcome their challenges and discover their own strength.",
   },
