@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "next build && git add -A out && git commit -m \"build: refresh static export\" && git push"
   },
   "dependencies": {
     "@calcom/embed-react": "^1.5.3",

@@ -3,12 +3,18 @@
 #
 # cPanel clones this repo server-side and runs these tasks when you press
 # "Deploy HEAD Commit" in cPanel → Git Version Control. Shared hosting can't
-# run `next build`, so the prebuilt static export in `out/` is committed to the
-# repo and simply copied into place here.
+# run `next build`, so the prebuilt static export in `out/` is committed to
+# the repo and simply copied into place here.
 #
-# DEPLOYPATH must match the cPanel account's docroot.
+# $HOME is set to the cPanel account's home directory during deployment, so
+# this resolves correctly without hardcoding the account username.
+#
+# Note: this copies over the existing docroot without clearing it first, which
+# is deliberate — it won't delete anything already in public_html. If an older
+# site is there, its leftover files will persist alongside these; clear
+# public_html by hand once, then redeploy.
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/connectandgrow/public_html
-    - /bin/mkdir -p $DEPLOYPATH
-    - /bin/cp -R out/. $DEPLOYPATH/
+    - export DEPLOYPATH="$HOME/public_html"
+    - /bin/mkdir -p "$DEPLOYPATH"
+    - /bin/cp -R out/. "$DEPLOYPATH"/
