@@ -1,0 +1,14 @@
+---
+# cPanel Git Version Control deployment.
+#
+# cPanel clones this repo server-side and runs these tasks when you press
+# "Deploy HEAD Commit" in cPanel → Git Version Control. Shared hosting can't
+# run `next build`, so the prebuilt static export in `out/` is committed to the
+# repo and simply copied into place here.
+#
+# DEPLOYPATH must match the cPanel account's docroot.
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/connectandgrow/public_html
+    - /bin/mkdir -p $DEPLOYPATH
+    - /bin/cp -R out/. $DEPLOYPATH/

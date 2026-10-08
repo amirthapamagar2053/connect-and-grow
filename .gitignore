@@ -15,7 +15,9 @@
 
 # next.js
 /.next/
-/out/
+# /out/ is intentionally NOT ignored: shared cPanel hosting can't run
+# `next build`, so the static export is committed and deployed by
+# cPanel Git Version Control via .cpanel.yml.
 
 # production
 /build
