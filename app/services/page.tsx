@@ -9,7 +9,7 @@ export default function ServicesPage() {
             Our Services
           </span>
           <h1 className="text-6xl md:text-7xl font-light text-primary leading-[1.1] mb-8 italic font-headline">
-            A Sanctuary for <span className="block">Your Healing Journey.</span>
+            A Sanctuary for <span className="block">Your Wellness Journey.</span>
           </h1>
           <p className="text-xl text-on-surface-variant max-w-xl leading-relaxed">
             Explore our diverse range of therapeutic services, each designed

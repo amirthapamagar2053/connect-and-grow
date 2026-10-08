@@ -15,7 +15,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
-  title: "Connect & Grow | A Sanctuary for Healing",
+  title: "Connect & Grow | A Sanctuary for Wellness",
   description:
     "Navigate life's complexities with professional guidance in a space designed for clarity, safety, and personal growth.",
 };
