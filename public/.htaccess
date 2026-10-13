@@ -1,0 +1,21 @@
+# Apache/LiteSpeed config for the cPanel docroot.
+#
+# This file lives in `public/` so `next build` copies it into `out/`, which
+# means the cPanel deployment installs it like any other asset. Editing it by
+# hand on the server would be undone by the next deploy.
+#
+# The site is a static export (next.config.ts: output: "export" with
+# trailingSlash: true), so every route is emitted as `<route>/index.html` and
+# the server resolves it from the directory with no help needed.
+#
+# Do NOT reintroduce the old rewrite rules:
+#
+#   DirectorySlash Off
+#   RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+#   RewriteRule ^(.+)/$ /$1.html [L]
+#
+# They belonged to an earlier flat-file export (about.html, services.html, ...).
+# Against the current layout they rewrite /about/ to a leftover about.html and
+# shadow every real page, and `DirectorySlash Off` also stops /about from
+# redirecting to /about/.
+ErrorDocument 404 /404.html
