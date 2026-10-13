@@ -44,7 +44,7 @@ const COUNSELLORS = [
     title: "Counsellor",
     photo: "/thelma.jpeg",
     objectPosition: "center 42%",
-    calLink: "THELMA_CAL_USERNAME/discovery-call", // ← replace with Thelma's Cal.com link
+    calLink: "thelma-bennett-9k1gsh/counselling-session",
     specialties: ["Depression", "Anxiety", "Trauma-Informed Care", "Mental Health"],
   },
 ];
