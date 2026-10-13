@@ -20,6 +20,16 @@ import { useEffect, useState } from "react";
 //    happens — nothing else to wire up.
 // ─────────────────────────────────────────────────────────────────────────────
 
+// Session pricing and the insurers whose policies we accept rebates against.
+// Keep these in sync with the price set on each counsellor's Cal.com event type.
+const SESSION_FEE = "$150";
+const SESSION_LENGTH = "60 mins";
+const REBATE_INSURERS = ["Bupa", "HCF", "Medibank"];
+// Reads as "Bupa, HCF and Medibank" in the rebate copy.
+const REBATE_INSURER_LIST = `${REBATE_INSURERS.slice(0, -1).join(", ")} and ${
+  REBATE_INSURERS[REBATE_INSURERS.length - 1]
+}`;
+
 const COUNSELLORS = [
   {
     name: "Barada Koirala",
@@ -112,6 +122,56 @@ export default function BookingPage() {
           Choose your counsellor and pick a time — payment is completed
           securely in the same step.
         </p>
+
+        {/* Fees & private health insurance rebates */}
+        <div className="mt-12 grid md:grid-cols-2 gap-6">
+          <div className="rounded-xl border border-outline-variant/40 bg-surface shadow-sm p-7">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0">
+                <span className="material-symbols-outlined text-xl">schedule</span>
+              </div>
+              <div>
+                <span className="font-label text-xs uppercase tracking-[0.15em] text-secondary block mb-2">
+                  Counselling session
+                </span>
+                <p className="font-headline text-3xl text-primary leading-none">
+                  {SESSION_FEE}
+                </p>
+                <p className="font-body text-on-surface-variant mt-2">
+                  per session ({SESSION_LENGTH})
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-outline-variant/40 bg-surface shadow-sm p-7">
+            <div className="flex items-start gap-4">
+              <div className="w-10 h-10 rounded-lg bg-secondary-container text-on-secondary-container flex items-center justify-center flex-shrink-0">
+                <span className="material-symbols-outlined text-xl">health_and_safety</span>
+              </div>
+              <div>
+                <span className="font-label text-xs uppercase tracking-[0.15em] text-secondary block mb-2">
+                  Private health insurance rebates
+                </span>
+                <p className="font-body text-on-surface-variant leading-relaxed">
+                  We accept clients with eligible private health insurance,
+                  including {REBATE_INSURER_LIST}, where counselling services
+                  are covered under their policy.
+                </p>
+                <div className="flex flex-wrap gap-1.5 mt-4">
+                  {REBATE_INSURERS.map((insurer) => (
+                    <span
+                      key={insurer}
+                      className="text-xs bg-secondary-container text-on-secondary-container px-2.5 py-1 rounded-full"
+                    >
+                      {insurer}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </section>
 
       <div className="max-w-4xl mx-auto px-6 md:px-8 space-y-16">
@@ -225,7 +285,7 @@ export default function BookingPage() {
                     <div>
                       <h2 className="font-headline text-3xl text-primary">Choose your time &amp; pay</h2>
                       <p className="text-on-surface-variant mt-1">
-                        Booking with <span className="font-semibold text-on-surface">{counsellor.name}</span> — pick an available slot, then complete secure payment right here to confirm.
+                        Booking with <span className="font-semibold text-on-surface">{counsellor.name}</span> — pick an available slot, then complete secure payment right here to confirm. {SESSION_FEE} per {SESSION_LENGTH} session.
                       </p>
                     </div>
                   </div>
