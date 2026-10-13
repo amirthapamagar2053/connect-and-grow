@@ -1,7 +1,7 @@
 "use client";
 
 import Cal, { getCalApi } from "@calcom/embed-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // ─────────────────────────────────────────────────────────────────────────────
 // SETUP INSTRUCTIONS
@@ -58,6 +58,14 @@ function namespaceFor(calLink: string) {
   return calLink.replace(/[^a-zA-Z0-9_-]/g, "-");
 }
 
+// Animated scrolling is disorienting for people who've asked their OS to
+// reduce motion, so jump straight there for them instead.
+function scrollBehavior(): ScrollBehavior {
+  return window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "auto"
+    : "smooth";
+}
+
 export default function BookingPage() {
   const [selected, setSelected] = useState<number | null>(null);
   const [confirmed, setConfirmed] = useState<{
@@ -66,6 +74,23 @@ export default function BookingPage() {
   } | null>(null);
 
   const counsellor = selected !== null ? COUNSELLORS[selected] : null;
+  const calRef = useRef<HTMLDivElement>(null);
+
+  // Step 2 only mounts once a counsellor is picked, so the scroll has to wait
+  // for React to commit it — doing this in the card's own onClick would run
+  // before the calendar exists. The target carries scroll-mt-24 to stop clear
+  // of the fixed nav.
+  const scrollToCalendar = () =>
+    calRef.current?.scrollIntoView({
+      behavior: scrollBehavior(),
+      block: "start",
+    });
+
+  useEffect(() => {
+    if (!counsellor) return;
+    scrollToCalendar();
+    // Re-runs when the visitor switches counsellor, which remounts the embed.
+  }, [counsellor]);
 
   useEffect(() => {
     if (!counsellor) return;
@@ -228,7 +253,17 @@ export default function BookingPage() {
                 {COUNSELLORS.map((c, i) => (
                   <button
                     key={c.name}
-                    onClick={() => setSelected(i)}
+                    onClick={() => {
+                      // Picking the already-selected card doesn't change state,
+                      // so the effect above won't re-run and the click would
+                      // feel dead. The calendar already exists here, so scroll
+                      // to it directly.
+                      if (selected === i) {
+                        scrollToCalendar();
+                        return;
+                      }
+                      setSelected(i);
+                    }}
                     className={`text-left rounded-xl border-2 overflow-hidden transition-all duration-300 shadow-sm group ${
                       selected === i
                         ? "border-primary shadow-lg"
@@ -301,7 +336,14 @@ export default function BookingPage() {
                     </span>
                   </div>
 
-                  <div className="rounded-xl overflow-hidden border border-outline-variant/40 shadow-sm bg-surface">
+                  {/* min-h matches the Cal embed's height below. Without it the
+                      wrapper is ~0px tall until Cal's iframe mounts, so the
+                      document is too short for the auto-scroll to reach the
+                      calendar — it would stop part-way down the page. */}
+                  <div
+                    ref={calRef}
+                    className="scroll-mt-24 min-h-[700px] rounded-xl overflow-hidden border border-outline-variant/40 shadow-sm bg-surface"
+                  >
                     <Cal
                       key={counsellor.calLink}
                       calLink={counsellor.calLink}
