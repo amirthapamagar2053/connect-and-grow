@@ -36,7 +36,7 @@ const COUNSELLORS = [
     title: "Counsellor",
     photo: "/barada.jpeg",
     objectPosition: "center 38%",
-    calLink: "amir-thapa-wdlxml/30min", // ← replace with Barada's Cal.com link
+    calLink: "barada-koirala-bukj0l/counselling-session",
     specialties: ["Grief & Loss", "Trauma", "Anxiety", "Depression", "Workplace Stress"],
   },
   {
