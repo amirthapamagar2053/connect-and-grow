@@ -2,7 +2,7 @@ export default function TermsOfServicePage() {
   const sections = [
     {
       title: "Our Services",
-      body: "Connect & Grow provides counselling services delivered face-to-face, via telehealth, and via Zoom. By booking a session, you agree to these terms.",
+      body: "Connect & Grow provides counselling services delivered face-to-face, via telehealth, and via Google Meet. By booking a session, you agree to these terms.",
     },
     {
       title: "Booking & Cancellations",

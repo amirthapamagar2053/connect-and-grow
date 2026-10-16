@@ -18,7 +18,7 @@ export default function ServicesPage() {
           </p>
           <p className="mt-6 flex items-center gap-2 text-secondary font-medium">
             <span className="material-symbols-outlined">event_available</span>
-            We&apos;re available for face-to-face, telehealth, and Zoom services.
+            We&apos;re available for face-to-face, telehealth, and Google Meet services.
           </p>
         </div>
       </section>
