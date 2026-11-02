@@ -1,4 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  description:
+    "Professional counselling and therapy in Australia. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. Book online.",
+  alternates: { canonical: "/" },
+  openGraph: { description: "Professional counselling and therapy in Australia. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. Book online.", url: "/" },
+};
+
 
 export default function Home() {
   return (

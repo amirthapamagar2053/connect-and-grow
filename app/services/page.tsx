@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Counselling Services",
+  description:
+    "Individual and couples counselling, grief and loss support, trauma-informed therapy, and telehealth sessions available face-to-face, by phone or via Zoom.",
+  alternates: { canonical: "/services/" },
+  openGraph: { title: "Counselling Services | Connect & Grow", description: "Individual and couples counselling, grief and loss support, trauma-informed therapy, and telehealth sessions available face-to-face, by phone or via Zoom.", url: "/services/" },
+};
+
 
 export default function ServicesPage() {
   return (

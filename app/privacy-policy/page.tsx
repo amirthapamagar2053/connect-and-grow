@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy",
+  description:
+    "How Connect & Grow collects, uses and protects your personal and health information in line with Australian privacy obligations.",
+  alternates: { canonical: "/privacy-policy/" },
+  openGraph: { title: "Privacy Policy | Connect & Grow", description: "How Connect & Grow collects, uses and protects your personal and health information in line with Australian privacy obligations.", url: "/privacy-policy/" },
+};
+
 export default function PrivacyPolicyPage() {
   const sections = [
     {

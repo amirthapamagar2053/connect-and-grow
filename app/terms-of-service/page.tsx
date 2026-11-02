@@ -1,3 +1,13 @@
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "The terms that apply when you book and attend counselling sessions with Connect & Grow.",
+  alternates: { canonical: "/terms-of-service/" },
+  openGraph: { title: "Terms of Service | Connect & Grow", description: "The terms that apply when you book and attend counselling sessions with Connect & Grow.", url: "/terms-of-service/" },
+};
+
 export default function TermsOfServicePage() {
   const sections = [
     {

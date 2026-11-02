@@ -1,4 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Contact Us",
+  description:
+    "Get in touch with Connect & Grow counselling. Contact our counsellors directly to ask a question or arrange your first session.",
+  alternates: { canonical: "/contact/" },
+  openGraph: { title: "Contact Us | Connect & Grow", description: "Get in touch with Connect & Grow counselling. Contact our counsellors directly to ask a question or arrange your first session.", url: "/contact/" },
+};
+
 
 const COUNSELLORS = [
   {
