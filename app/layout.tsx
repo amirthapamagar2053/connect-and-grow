@@ -39,6 +39,13 @@ export const metadata: Metadata = {
       "Professional counselling and therapy in Australia. Book a session with an experienced counsellor.",
   },
   robots: { index: true, follow: true },
+  // Emits <meta name="google-site-verification"> into every page's <head>, which
+  // is what Search Console's meta-tag verification looks for. Keep it in place
+  // after verifying: Search Console re-checks periodically and removing it
+  // un-verifies the property.
+  verification: {
+    google: "icbd4wTpGsZXnln-AO8Fxj6s42nroWhhIi1BA1Hb9C4",
+  },
 };
 
 // LocalBusiness structured data. For a local practice this is what lets Google
