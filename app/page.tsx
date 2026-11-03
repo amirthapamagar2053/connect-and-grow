@@ -3,9 +3,9 @@ import Link from "next/link";
 
 export const metadata: Metadata = {
   description:
-    "Professional counselling and therapy in Australia. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. Book online.",
+    "Professional counselling and therapy in Sydney, NSW. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. In-person or telehealth Australia-wide. Book online.",
   alternates: { canonical: "/" },
-  openGraph: { description: "Professional counselling and therapy in Australia. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. Book online.", url: "/" },
+  openGraph: { description: "Professional counselling and therapy in Sydney, NSW. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. In-person or telehealth Australia-wide. Book online.", url: "/" },
 };
 
 

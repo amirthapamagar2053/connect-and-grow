@@ -4,9 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "About Our Counsellors",
   description:
-    "Meet Barada Koirala and Thelma Bennett, qualified counsellors offering client-centred, evidence-based support for grief, trauma, anxiety and depression.",
+    "Meet Barada Koirala and Thelma Bennett, qualified counsellors in Sydney, NSW offering client-centred, evidence-based support for grief, trauma, anxiety and depression.",
   alternates: { canonical: "/about/" },
-  openGraph: { title: "About Our Counsellors | Connect & Grow", description: "Meet Barada Koirala and Thelma Bennett, qualified counsellors offering client-centred, evidence-based support for grief, trauma, anxiety and depression.", url: "/about/" },
+  openGraph: { title: "About Our Counsellors | Connect & Grow", description: "Meet Barada Koirala and Thelma Bennett, qualified counsellors in Sydney, NSW offering client-centred, evidence-based support for grief, trauma, anxiety and depression.", url: "/about/" },
 };
 
 

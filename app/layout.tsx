@@ -3,7 +3,14 @@ import { Manrope, Newsreader } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import {
+  COUNSELLORS,
+  SITE_COUNTRY,
+  SITE_LOCALITY,
+  SITE_NAME,
+  SITE_REGION,
+  SITE_URL,
+} from "@/lib/site";
 
 const newsreader = Newsreader({
   variable: "--font-newsreader",
@@ -21,22 +28,22 @@ export const metadata: Metadata = {
   // search engines can't tell which host is authoritative.
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Connect & Grow | Counselling & Therapy Services in Australia",
+    default: "Connect & Grow | Counselling & Therapy in Sydney, NSW",
     // Pages set a short `title` and inherit this suffix, so each page gets a
     // distinct <title> instead of all eight sharing one.
     template: "%s | Connect & Grow",
   },
   description:
-    "Professional counselling and therapy in Australia. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. Book online.",
+    "Professional counselling and therapy in Sydney, NSW. Experienced counsellors supporting anxiety, depression, grief, trauma and relationship difficulties. In-person or telehealth Australia-wide. Book online.",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "en_AU",
     siteName: SITE_NAME,
     url: SITE_URL,
-    title: "Connect & Grow | Counselling & Therapy Services in Australia",
+    title: "Connect & Grow | Counselling & Therapy in Sydney, NSW",
     description:
-      "Professional counselling and therapy in Australia. Book a session with an experienced counsellor.",
+      "Professional counselling and therapy in Sydney, NSW. Book a session with an experienced counsellor, in person or by telehealth.",
   },
   robots: { index: true, follow: true },
   // Emits <meta name="google-site-verification"> into every page's <head>, which
@@ -59,8 +66,20 @@ const localBusinessSchema = {
     "Counselling and therapy services supporting anxiety, depression, grief, trauma and relationship difficulties.",
   url: SITE_URL,
   image: `${SITE_URL}/logo.webp`,
-  address: { "@type": "PostalAddress", addressCountry: "AU" },
-  areaServed: { "@type": "Country", name: "Australia" },
+  telephone: COUNSELLORS[0].phone,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: SITE_LOCALITY,
+    addressRegion: SITE_REGION,
+    addressCountry: SITE_COUNTRY,
+  },
+  // Two entries on purpose: Sydney is where in-person sessions happen and the
+  // locality worth ranking for, while telehealth genuinely reaches the rest of
+  // the country. Listing only the country was why neither could rank.
+  areaServed: [
+    { "@type": "City", name: SITE_LOCALITY },
+    { "@type": "Country", name: "Australia" },
+  ],
   availableService: [
     "Individual Counselling",
     "Couples Counselling",
@@ -68,10 +87,13 @@ const localBusinessSchema = {
     "Trauma-Informed Therapy",
     "Telehealth Counselling",
   ],
-  employee: [
-    { "@type": "Person", name: "Barada Koirala", jobTitle: "Counsellor" },
-    { "@type": "Person", name: "Thelma Bennett", jobTitle: "Counsellor" },
-  ],
+  employee: COUNSELLORS.map((c) => ({
+    "@type": "Person",
+    name: c.name,
+    jobTitle: c.title,
+    telephone: c.phone,
+    email: c.email,
+  })),
 };
 
 export default function RootLayout({

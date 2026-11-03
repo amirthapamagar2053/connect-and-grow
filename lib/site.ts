@@ -5,6 +5,35 @@ export const SITE_URL = "https://connectandgrowservices.com.au";
 
 export const SITE_NAME = "Connect & Grow";
 
+// There's no public street address — both counsellors work across Sydney and
+// by telehealth — so the practice is marked up as serving an area rather than
+// trading from a shopfront. The locality still matters: without one Google has
+// nothing to match against "counselling Sydney" searches, and `addressCountry`
+// on its own is far too broad to rank for anything.
+export const SITE_LOCALITY = "Sydney";
+export const SITE_REGION = "NSW";
+export const SITE_COUNTRY = "AU";
+
+// Shared by the contact page and the LocalBusiness structured data so the two
+// can't drift. `phone` is E.164 for schema.org and tel: links; `phoneDisplay`
+// is the spaced form people read.
+export const COUNSELLORS = [
+  {
+    name: "Barada Koirala",
+    title: "Counsellor",
+    email: "baradacounsellor@gmail.com",
+    phone: "+61411550433",
+    phoneDisplay: "+61 411 550 433",
+  },
+  {
+    name: "Thelma Bennett",
+    title: "Counsellor",
+    email: "thelmacounsellor@gmail.com",
+    phone: "+61432147860",
+    phoneDisplay: "+61 432 147 860",
+  },
+];
+
 // Routes carry a trailing slash to match `trailingSlash: true` in
 // next.config.ts — the sitemap should list the URLs Apache actually serves,
 // not ones that redirect.

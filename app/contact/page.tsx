@@ -1,27 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { COUNSELLORS, SITE_LOCALITY, SITE_REGION } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with Connect & Grow counselling. Contact our counsellors directly to ask a question or arrange your first session.",
+    "Contact Connect & Grow counselling in Sydney, NSW. Call or email our counsellors directly to ask a question or arrange your first session.",
   alternates: { canonical: "/contact/" },
-  openGraph: { title: "Contact Us | Connect & Grow", description: "Get in touch with Connect & Grow counselling. Contact our counsellors directly to ask a question or arrange your first session.", url: "/contact/" },
+  openGraph: { title: "Contact Us | Connect & Grow", description: "Contact Connect & Grow counselling in Sydney, NSW. Call or email our counsellors directly to ask a question or arrange your first session.", url: "/contact/" },
 };
-
-
-const COUNSELLORS = [
-  {
-    name: "Barada Koirala",
-    title: "Counsellor",
-    email: "baradacounsellor@gmail.com",
-  },
-  {
-    name: "Thelma Bennett",
-    title: "Counsellor",
-    email: "thelmacounsellor@gmail.com",
-  },
-];
 
 export default function ContactPage() {
   return (
@@ -36,6 +23,11 @@ export default function ContactPage() {
         <p className="font-body text-lg text-on-surface-variant leading-relaxed">
           Have a question before booking, or want to reach a counsellor
           directly? We&apos;d love to hear from you.
+        </p>
+        <p className="font-body mt-6 inline-flex items-center gap-2 text-secondary font-medium">
+          <span className="material-symbols-outlined">location_on</span>
+          Based in {SITE_LOCALITY}, {SITE_REGION} — available in person or by
+          telehealth across Australia.
         </p>
       </section>
 
@@ -52,13 +44,26 @@ export default function ContactPage() {
               <p className="font-label text-sm uppercase tracking-widest text-secondary mb-4">
                 {c.title}
               </p>
-              <a
-                href={`mailto:${c.email}`}
-                className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
-              >
-                <span className="material-symbols-outlined text-lg">mail</span>
-                {c.email}
-              </a>
+              <div className="flex flex-col items-center gap-3">
+                <a
+                  href={`tel:${c.phone}`}
+                  className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4"
+                >
+                  <span className="material-symbols-outlined text-lg">
+                    call
+                  </span>
+                  {c.phoneDisplay}
+                </a>
+                <a
+                  href={`mailto:${c.email}`}
+                  className="inline-flex items-center gap-2 text-primary font-semibold hover:underline underline-offset-4 break-all"
+                >
+                  <span className="material-symbols-outlined text-lg">
+                    mail
+                  </span>
+                  {c.email}
+                </a>
+              </div>
             </div>
           ))}
         </div>

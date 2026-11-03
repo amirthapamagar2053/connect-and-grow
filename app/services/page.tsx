@@ -4,9 +4,9 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Counselling Services",
   description:
-    "Individual and couples counselling, grief and loss support, trauma-informed therapy, and telehealth sessions available face-to-face, by phone or via Zoom.",
+    "Individual and couples counselling, grief and loss support, and trauma-informed therapy in Sydney, NSW — face-to-face, by phone or via Google Meet.",
   alternates: { canonical: "/services/" },
-  openGraph: { title: "Counselling Services | Connect & Grow", description: "Individual and couples counselling, grief and loss support, trauma-informed therapy, and telehealth sessions available face-to-face, by phone or via Zoom.", url: "/services/" },
+  openGraph: { title: "Counselling Services | Connect & Grow", description: "Individual and couples counselling, grief and loss support, and trauma-informed therapy in Sydney, NSW — face-to-face, by phone or via Google Meet.", url: "/services/" },
 };
 
 
