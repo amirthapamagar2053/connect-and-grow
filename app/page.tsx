@@ -23,9 +23,14 @@ export default function Home() {
               <span className="italic">build resilience and lasting well-being.</span>
             </h1>
             <p className="text-xl text-on-surface-variant max-w-lg leading-relaxed font-body">
-           Life can feel overwhelming at times, but support is available. Our caring and
-experienced therapists offer a welcoming environment where you can feel heard,
-understood, and empowered to move forward with confidience.
+              Life can feel overwhelming at times, but support is available. Our
+              caring and experienced counsellors in Sydney offer a welcoming
+              environment where you can feel heard, understood, and empowered to
+              move forward with confidence.
+            </p>
+            <p className="flex items-center gap-2 text-secondary font-medium">
+              <span className="material-symbols-outlined">location_on</span>
+              Based in Sydney, NSW — in person or by telehealth Australia-wide.
             </p>
             <div className="flex flex-wrap gap-4 pt-4">
               <Link

@@ -22,13 +22,14 @@ export default function ServicesPage() {
             A Sanctuary for <span className="block">Your Wellness Journey.</span>
           </h1>
           <p className="text-xl text-on-surface-variant max-w-xl leading-relaxed">
-            Explore our diverse range of therapeutic services, each designed
-            with a gentle, patient-centered approach to foster resilience and
-            inner peace.
+            Explore our diverse range of therapeutic services in Sydney, each
+            designed with a gentle, patient-centred approach to foster
+            resilience and inner peace.
           </p>
           <p className="mt-6 flex items-center gap-2 text-secondary font-medium">
             <span className="material-symbols-outlined">event_available</span>
-            We&apos;re available for face-to-face, telehealth, and Google Meet services.
+            Face-to-face across Sydney, or by telehealth and Google Meet
+            Australia-wide.
           </p>
         </div>
       </section>
