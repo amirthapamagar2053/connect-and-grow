@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Counselling Services",
   description:
     "Individual and couples counselling, grief and loss support, and trauma-informed therapy in Sydney, NSW — face-to-face, by phone or via Google Meet.",
   alternates: { canonical: "/services/" },
-  openGraph: { title: "Counselling Services | Connect & Grow", description: "Individual and couples counselling, grief and loss support, and trauma-informed therapy in Sydney, NSW — face-to-face, by phone or via Google Meet.", url: "/services/" },
+  openGraph: { title: "Counselling Services | Connect & Grow", description: "Individual and couples counselling, grief and loss support, and trauma-informed therapy in Sydney, NSW — face-to-face, by phone or via Google Meet.", url: "/services/", images: [OG_IMAGE] },
 };
 
 
@@ -57,13 +58,12 @@ export default function ServicesPage() {
               Learn More{" "}
               <span className="material-symbols-outlined">arrow_forward</span>
             </Link>
-            <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-              <img
-                className="w-full h-full object-cover grayscale mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBH32rWpFORsE0MPkB7I_kE7Tj123JMmrdTdlbkHH7DIbcoAne4bciWcWtCpxP20Txhs-E7rE0RIlqCMVck7dVRN_DUi0uThBOWjh-KF6rK9h0dh11xV1ViesEULeB60qGVZT5menBo_FM3hnr48uFDf0XRL_xRfJ1BmqyjlDOXUqtCJ6vNLlFsb1HToHSEBnac3U81V0Cu6LUc5DmLk8b4JAqreo7Dp3YPUghw1R70Oat0HA5jV_SIr0aiLQe1xhxuYSFWy_koCiA"
-                alt="background"
-              />
-            </div>
+            {/* A decorative background image sat here, loaded from a
+                lh3.googleusercontent.com/aida-public/… URL left over from the
+                design mockup. Those URLs are temporary and both had already
+                started 404ing, so the card rendered the alt text "background"
+                where the texture should have been. Drop a real image into
+                public/ and restore this block if you want the texture back. */}
           </div>
 
           <div className="md:col-span-4 group bg-surface-container-high rounded-lg p-8 flex flex-col justify-between border border-outline-variant/40 shadow-sm hover:shadow-xl transition-shadow duration-500">
@@ -72,20 +72,34 @@ export default function ServicesPage() {
                 <span className="material-symbols-outlined">diversity_2</span>
               </div>
               <h3 className="text-2xl font-medium text-primary mb-4 font-headline">
-                Couples Counseling
+                Couples Counselling
               </h3>
               <p className="text-on-surface-variant leading-relaxed mb-6">
                 Rekindle connection and improve communication through
                 evidence-based approaches.
               </p>
             </div>
-            <div className="aspect-square w-full rounded-lg overflow-hidden mb-4">
-              <img
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCUFaJAlOUs7fCRmr9_FCRW2IXFb8ZMQnkUwcaTn__pSwpg6Yap72jlQO7qh2agXYhti9VtKDzpdu372jJn3F1_ASS9XwdBhV_w1cyMd2zhWAlqMkvwBige7rQ-DhDwOo3bTgAPDoo_LCWVAIEaC7VoIQxuhrG_Q9PksKqqfIZsT8Y3rLQLSp2i-EGETAIUjOuOVw1-M6Vg8oC-4qBPxtaHMLGRdOoRY7wtI3GhCR2qS3HXGYeOWuoEwjX8jPktTpUB-7woHp7l-vQ"
-                alt="hands"
-              />
-            </div>
+            {/* A square photo sat here, from a dead mockup URL (see the note in
+                the card above). The card had no call to action of its own
+                because the photo filled this space — the link below replaces
+                it, so the card now matches its sibling and the booking page
+                gets an internal link from every service card. To put a photo
+                back, add it to public/ and restore:
+
+                <div className="aspect-square w-full rounded-lg overflow-hidden mb-4">
+                  <img
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    src="/couples-counselling.webp"
+                    alt="<describe what the photo shows>"
+                  />
+                </div> */}
+            <Link
+              href="/booking"
+              className="flex items-center gap-2 text-primary font-semibold tracking-wide cursor-pointer group-hover:gap-4 transition-all"
+            >
+              Learn More{" "}
+              <span className="material-symbols-outlined">arrow_forward</span>
+            </Link>
           </div>
         </div>
       </section>

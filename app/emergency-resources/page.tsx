@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Emergency Mental Health Resources",
   description:
     "Immediate crisis support contacts in Australia, including 000, Lifeline and other 24/7 mental health helplines.",
   alternates: { canonical: "/emergency-resources/" },
-  openGraph: { title: "Emergency Mental Health Resources | Connect & Grow", description: "Immediate crisis support contacts in Australia, including 000, Lifeline and other 24/7 mental health helplines.", url: "/emergency-resources/" },
+  openGraph: { title: "Emergency Mental Health Resources | Connect & Grow", description: "Immediate crisis support contacts in Australia, including 000, Lifeline and other 24/7 mental health helplines.", url: "/emergency-resources/", images: [OG_IMAGE] },
 };
 
 const RESOURCES = [

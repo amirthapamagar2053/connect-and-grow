@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import { Manrope, Newsreader } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import {
   COUNSELLORS,
+  OG_IMAGE,
   SITE_COUNTRY,
   SITE_LOCALITY,
   SITE_NAME,
@@ -20,6 +22,27 @@ const newsreader = Newsreader({
 const manrope = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
+});
+
+// Material Symbols, self-hosted and subset to only the 17 icons this site
+// actually renders (app/fonts/…-subset.woff2, 29KB — the full family is
+// several megabytes). It used to be a <link> to fonts.googleapis.com in
+// <head>, which blocked first render on two round trips to a third party.
+//
+// Regenerating after adding an icon: fetch
+// https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=<comma-separated,sorted>
+// and download the woff2 it points at. An icon missing from the subset renders
+// as its literal name ("location_on"), so the list must cover every icon,
+// including the ones passed through `icon:` fields rather than written inline.
+//
+// `display: "block"` rather than the usual "swap": with an icon font, swap
+// shows that literal ligature text while the font loads.
+const materialSymbols = localFont({
+  src: "./fonts/material-symbols-outlined-subset.woff2",
+  variable: "--font-material-symbols",
+  weight: "100 700",
+  style: "normal",
+  display: "block",
 });
 
 export const metadata: Metadata = {
@@ -44,7 +67,13 @@ export const metadata: Metadata = {
     title: "Connect & Grow | Counselling & Therapy in Sydney, NSW",
     description:
       "Professional counselling and therapy in Sydney, NSW. Book a session with an experienced counsellor, in person or by telehealth.",
+    images: [OG_IMAGE],
   },
+  // Pages don't declare `twitter`, so they all inherit this — which is why the
+  // card only needs defining once, unlike `openGraph` above. Without the card
+  // type, X and several other scrapers fall back to a small thumbnail instead
+  // of the full-width preview.
+  twitter: { card: "summary_large_image", images: [OG_IMAGE] },
   robots: { index: true, follow: true },
   // Emits <meta name="google-site-verification"> into every page's <head>, which
   // is what Search Console's meta-tag verification looks for. Keep it in place
@@ -104,13 +133,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${newsreader.variable} ${manrope.variable} h-full antialiased`}
+      className={`${newsreader.variable} ${manrope.variable} ${materialSymbols.variable} h-full antialiased`}
     >
       <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

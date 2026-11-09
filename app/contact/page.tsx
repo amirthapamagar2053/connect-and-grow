@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { COUNSELLORS, SITE_LOCALITY, SITE_REGION } from "@/lib/site";
+import { COUNSELLORS, OG_IMAGE, SITE_LOCALITY, SITE_REGION } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
     "Contact Connect & Grow counselling in Sydney, NSW. Call or email our counsellors directly to ask a question or arrange your first session.",
   alternates: { canonical: "/contact/" },
-  openGraph: { title: "Contact Us | Connect & Grow", description: "Contact Connect & Grow counselling in Sydney, NSW. Call or email our counsellors directly to ask a question or arrange your first session.", url: "/contact/" },
+  openGraph: { title: "Contact Us | Connect & Grow", description: "Contact Connect & Grow counselling in Sydney, NSW. Call or email our counsellors directly to ask a question or arrange your first session.", url: "/contact/", images: [OG_IMAGE] },
 };
 
 export default function ContactPage() {

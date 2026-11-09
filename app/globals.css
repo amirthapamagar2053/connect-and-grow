@@ -83,7 +83,32 @@ h3,
   font-family: var(--font-manrope), system-ui, sans-serif;
 }
 
+/* These declarations used to come from the fonts.googleapis.com stylesheet that
+   app/layout.tsx loaded in <head>; only font-variation-settings lived here. The
+   font is now self-hosted via next/font/local, so the whole rule has to be
+   local too — without `font-feature-settings: "liga"` the ligatures never form
+   and every icon renders as its literal name.
+
+   `font-size: 24px` is deliberate and load-bearing: this rule is unlayered, so
+   it beats Tailwind's layered `text-lg`/`text-xl`/`text-3xl` utilities that a
+   few icon spans carry. Those utilities never took effect under the Google
+   stylesheet either — keeping the 24px here preserves the current rendering
+   rather than silently resizing icons across five pages. */
 .material-symbols-outlined {
+  font-family: var(--font-material-symbols), sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: "liga";
+  font-feature-settings: "liga";
+  -webkit-font-smoothing: antialiased;
   font-variation-settings:
     "FILL" 0,
     "wght" 400,

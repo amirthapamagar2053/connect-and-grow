@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { OG_IMAGE } from "@/lib/site";
 
 // app/booking/page.tsx is a Client Component (it mounts the Cal.com embed),
 // and Client Components can't export `metadata` — so the booking page's
@@ -13,6 +14,7 @@ export const metadata: Metadata = {
     description:
       "Book a counselling session in Sydney, NSW, in person or by telehealth, at a time that suits you.",
     url: "/booking/",
+    images: [OG_IMAGE],
   },
 };
 
